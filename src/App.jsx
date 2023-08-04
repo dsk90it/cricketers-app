@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
 import getPlayers from './data/get-players'
-import List from './pages/List'
+import Home from './pages/Home'
 import Details from './pages/Details'
+import MainLayout from './layout/MainLayout'
 
 function App() {
   const [players, setPlayers] = useState([])
@@ -22,15 +23,13 @@ function App() {
   }, [])
 
   return (
-    <>
-      <h1>Search Players</h1>
-
+    <MainLayout>
       {!selectedPlayer ? (
-        <List items={players} handleClick={() => null} />
+        <Home content={players} />
       ) : (
         <Details player={selectedPlayer} handleBack={() => setSelectedPlayer(null)} />
       )}
-    </>
+    </MainLayout>
   )
 }
 
