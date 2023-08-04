@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <h1>Cricketer List</h1>
+      <h1>Search Players</h1>
 
       {!selectedPlayer ? (
         <List items={players} handleClick={() => null} />
