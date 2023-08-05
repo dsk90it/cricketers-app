@@ -1,11 +1,15 @@
 import { ageInYears, regularFormat } from '../utils'
 
-function List({ items }) {
+function List({ items, onListClick }) {
+  if (items.length === 0) {
+    return <p>No players found.</p>
+  }
+
   return (
     <ul className="w-full">
       {items.map((list) => {
         const { id } = list
-        return <ListItem key={id} {...list} handleClick={(id) => console.log(id)} />
+        return <ListItem key={id} {...list} handleClick={(id) => onListClick(id)} />
       })}
     </ul>
   )
@@ -13,6 +17,8 @@ function List({ items }) {
 
 // ListItem
 function ListItem({ name, type, points, dob, id, handleClick }) {
+  console.log('re-render: list item')
+
   return (
     <li
       className="flex items-center space-x-4 py-2 px-3 cursor-pointer border-b border-gray-200 hover:bg-gray-100 hover:text-blue-500"
