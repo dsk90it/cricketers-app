@@ -8,6 +8,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <React.StrictMode>
-    <App />
+    <main className="mx-auto px-4 max-w-2xl">
+      <App />
+    </main>
   </React.StrictMode>
 )

@@ -5,7 +5,7 @@ import List from '../components/List'
 function Home({ content }) {
   return (
     <>
-      <Filters heading="Cricket App" handleChange={(e) => console.log(e.target.value)} />
+      <Filters heading="Cricket Players" handleChange={(e) => console.log(e.target.value)} />
       <SearchBar handleChange={(e) => console.log('Search Query:', e.target.value)} />
       <List items={content} />
     </>

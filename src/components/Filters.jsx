@@ -17,8 +17,8 @@ function Filters({ heading, handleChange }) {
           onChange={(e) => handleChange(e)}
         >
           <option value="byName">Name</option>
-          <option value="byRank">Rank</option>
-          <option value="byAge">Age</option>
+          <option value="byRank">Age</option>
+          <option value="byType">Type</option>
         </select>
       </div>
     </section>

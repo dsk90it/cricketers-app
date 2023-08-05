@@ -1,35 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import getPlayers from './data/get-players'
 import Home from './pages/Home'
 import Details from './pages/Details'
-import MainLayout from './layout/MainLayout'
+import useFetch from './hooks/useFetch'
+import Loading from './components/Loading'
+import Errored from './components/Error'
 
 function App() {
-  const [players, setPlayers] = useState([])
+  const { isLoading, isError, data } = useFetch(getPlayers)
   const [selectedPlayer, setSelectedPlayer] = useState(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const playersData = await getPlayers()
-        setPlayers(playersData)
-      } catch (error) {
-        console.error('Error fetching players:', error)
-      }
-    }
+  if (isLoading) {
+    return <Loading />
+  }
 
-    fetchData()
-  }, [])
+  if (isError) {
+    return <Errored error={isError} />
+  }
 
   return (
-    <MainLayout>
+    <>
       {!selectedPlayer ? (
-        <Home content={players} />
+        <Home content={data} />
       ) : (
         <Details player={selectedPlayer} handleBack={() => setSelectedPlayer(null)} />
       )}
-    </MainLayout>
+    </>
   )
 }
 
