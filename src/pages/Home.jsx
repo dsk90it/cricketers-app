@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar'
 import List from '../components/List'
 
 function Home() {
-  const { players, setSelectedPlayer } = useDataContext()
+  const { players, setSelectedPlayer, setFilterType } = useDataContext()
 
   const handleListClick = (id) => {
     const cricketer = players.find((c) => c.id === id)
@@ -15,7 +15,7 @@ function Home() {
     <>
       <Filters
         heading="Cricket Players"
-        handleChange={(e) => console.log(e.target.value)}
+        handleChange={(e) => setFilterType(e.target.value)}
       />
       <SearchBar
         handleChange={(e) => console.log('Search Query:', e.target.value)}

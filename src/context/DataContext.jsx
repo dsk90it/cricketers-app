@@ -40,4 +40,5 @@ const useDataContext = () => {
   return useContext(DataContext)
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { DataContextProvider, useDataContext }
