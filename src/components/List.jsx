@@ -1,6 +1,9 @@
+import { useCricketContext } from '../context/CricketContext'
 import { ageInYears, regularFormat } from '../utils'
 
-function List({ items, onListClick }) {
+function List({ items }) {
+  const { dispatch } = useCricketContext()
+
   if (items.length === 0) {
     return <p>No players found.</p>
   }
@@ -16,7 +19,10 @@ function List({ items, onListClick }) {
             type={type}
             points={points}
             dob={dob}
-            handleClick={(id) => onListClick(id)}
+            handleClick={() => {
+              dispatch({ type: 'SET_SELECTED_CRICKETER', payload: list })
+              dispatch({ type: 'SET_DETAILS_PAGE', payload: true })
+            }}
           />
         )
       })}
@@ -26,11 +32,9 @@ function List({ items, onListClick }) {
 
 // ListItem
 function ListItem({ name, type, points, dob, id, handleClick }) {
-  console.log('re-render: list item')
-
   return (
     <li
-      className="flex items-center space-x-4 py-2 px-3 cursor-pointer border-b border-gray-200 hover:bg-gray-100 hover:text-blue-500"
+      className="flex items-center space-x-4 py-2 cursor-pointer border-b border-gray-200 hover:text-blue-500"
       onClick={() => handleClick(id)}
     >
       <div className="flex-1 min-w-0">

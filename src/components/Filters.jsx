@@ -13,12 +13,12 @@ function Filters({ heading, handleChange }) {
         <select
           id="countries"
           className="inline-block rounded-lg p-2 pl-8 text-sm focus:outline-blue-500 bg-gray-50 border border-gray-300"
-          defaultValue="byName"
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
         >
-          <option value="byName">Name</option>
-          <option value="byRank">Age</option>
-          <option value="byType">Type</option>
+          <option value="Name">Name</option>
+          <option value="Age">Age</option>
+          <option value="Points">Points</option>
+          <option value="Type">Type</option>
         </select>
       </div>
     </section>

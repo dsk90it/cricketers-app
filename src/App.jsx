@@ -1,13 +1,13 @@
 import Home from './pages/Home'
 import Details from './pages/Details'
-import { useDataContext } from './context/DataContext'
+import { useCricketContext } from './context/CricketContext'
 
 function App() {
-  const { selectedPlayer } = useDataContext()
+  const { state } = useCricketContext()
 
   return (
-    <main className="mx-auto px-4 max-w-2xl">
-      {!selectedPlayer ? <Home /> : <Details player={selectedPlayer} />}
+    <main className="mx-auto px-4 pb-10 max-w-2xl">
+      {!state.selectedCricketer ? <Home /> : <Details />}
     </main>
   )
 }
