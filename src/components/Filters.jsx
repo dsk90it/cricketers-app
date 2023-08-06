@@ -1,6 +1,6 @@
 import { IconFilter } from './Icons'
 
-function Filters({ heading, handleChange }) {
+function Filters({ heading, handleChange, value }) {
   return (
     <section className="flex w-full gap-4 my-8 items-center justify-between">
       <h1 className="text-xl font-semibold sm:text-2xl">{heading}</h1>
@@ -14,6 +14,7 @@ function Filters({ heading, handleChange }) {
           id="countries"
           className="inline-block rounded-lg p-2 pl-8 text-sm focus:outline-blue-500 bg-gray-50 border border-gray-300"
           onChange={handleChange}
+          value={value}
         >
           <option value="Name">Name</option>
           <option value="Age">Age</option>

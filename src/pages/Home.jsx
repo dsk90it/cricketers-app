@@ -53,6 +53,7 @@ function Home() {
         handleChange={(e) =>
           dispatch({ type: 'SET_SORTED_BY', payload: e.target.value })
         }
+        value={state.sortedBy}
       />
 
       {/* Search */}
