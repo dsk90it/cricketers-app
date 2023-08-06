@@ -9,8 +9,16 @@ function Home() {
 
   // Apply sorting and filtering based on sortedBy and searchQuery
   const filteredCricketers = state.cricketersData
-    .filter((cricketer) =>
-      cricketer.name.toLowerCase().includes(state.searchQuery.toLowerCase())
+    .filter(
+      (cricketer) =>
+        cricketer.name
+          .toLowerCase()
+          .includes(state.searchQuery.toLowerCase()) ||
+        (cricketer.type &&
+          cricketer.type
+            .toLowerCase()
+            .includes(state.searchQuery.toLowerCase())) ||
+        cricketer.points.toString().includes(state.searchQuery)
     )
     .sort((a, b) => {
       if (!a.hasOwnProperty('type')) a.type = null
