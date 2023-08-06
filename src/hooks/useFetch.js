@@ -21,7 +21,9 @@ const useFetch = (urlOrFunction) => {
         } else if (typeof urlOrFunction === 'function') {
           fetchedData = await urlOrFunction()
         } else {
-          throw new Error('Invalid argument. Please provide a URL or a fetch function.')
+          throw new Error(
+            'Invalid argument. Please provide a URL or a fetch function.'
+          )
         }
 
         setData(fetchedData)

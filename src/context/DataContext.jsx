@@ -31,7 +31,9 @@ const DataContextProvider = ({ children }) => {
     return <Errored error={isError} />
   }
 
-  return <DataContext.Provider value={defaultData}>{children}</DataContext.Provider>
+  return (
+    <DataContext.Provider value={defaultData}>{children}</DataContext.Provider>
+  )
 }
 
 const useDataContext = () => {

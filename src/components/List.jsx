@@ -8,8 +8,17 @@ function List({ items, onListClick }) {
   return (
     <ul className="w-full">
       {items.map((list) => {
-        const { id } = list
-        return <ListItem key={id} {...list} handleClick={(id) => onListClick(id)} />
+        const { id, name, type, points, dob } = list
+        return (
+          <ListItem
+            key={id}
+            name={name}
+            type={type}
+            points={points}
+            dob={dob}
+            handleClick={(id) => onListClick(id)}
+          />
+        )
       })}
     </ul>
   )
@@ -30,7 +39,9 @@ function ListItem({ name, type, points, dob, id, handleClick }) {
           {ageInYears(dob)} {type && ` / ${regularFormat(type)}`}
         </span>
       </div>
-      <div className="inline-flex text-slate-900 items-center font-semibold">{points}</div>
+      <div className="inline-flex text-slate-900 items-center font-semibold">
+        {points}
+      </div>
     </li>
   )
 }

@@ -5,7 +5,11 @@ import { useDataContext } from './context/DataContext'
 function App() {
   const { selectedPlayer } = useDataContext()
 
-  return <>{!selectedPlayer ? <Home /> : <Details player={selectedPlayer} />}</>
+  return (
+    <main className="mx-auto px-4 max-w-2xl">
+      {!selectedPlayer ? <Home /> : <Details player={selectedPlayer} />}
+    </main>
+  )
 }
 
 export default App

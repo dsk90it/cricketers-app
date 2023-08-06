@@ -13,8 +13,13 @@ function Home() {
 
   return (
     <>
-      <Filters heading="Cricket Players" handleChange={(e) => console.log(e.target.value)} />
-      <SearchBar handleChange={(e) => console.log('Search Query:', e.target.value)} />
+      <Filters
+        heading="Cricket Players"
+        handleChange={(e) => console.log(e.target.value)}
+      />
+      <SearchBar
+        handleChange={(e) => console.log('Search Query:', e.target.value)}
+      />
       <List items={players} onListClick={(id) => handleListClick(id)} />
     </>
   )

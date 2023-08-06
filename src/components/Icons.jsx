@@ -2,7 +2,13 @@ const defaultIconClass = `w-4 h-4 text-gray-500`
 
 export const IconFilter = ({ iconClass = defaultIconClass }) => {
   return (
-    <svg className={iconClass} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+    <svg
+      className={iconClass}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
       <path
         stroke="currentColor"
         strokeLinecap="round"
@@ -16,7 +22,13 @@ export const IconFilter = ({ iconClass = defaultIconClass }) => {
 
 export const IconSearch = ({ iconClass = defaultIconClass }) => {
   return (
-    <svg className={iconClass} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+    <svg
+      className={iconClass}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
       <path
         stroke="currentColor"
         strokeLinecap="round"
