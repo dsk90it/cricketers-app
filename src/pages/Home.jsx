@@ -2,6 +2,7 @@ import { useCricketContext } from '../context/CricketContext'
 import Filters from '../components/Filters'
 import SearchBar from '../components/SearchBar'
 import List from '../components/List'
+import Pagination from '../components/Pagination'
 
 function Home() {
   const { state, dispatch } = useCricketContext()
@@ -12,9 +13,17 @@ function Home() {
       cricketer.name.toLowerCase().includes(state.searchQuery.toLowerCase())
     )
     .sort((a, b) => {
+      if (!a.hasOwnProperty('type')) a.type = null
+      if (!b.hasOwnProperty('type')) b.type = null
+
       if (state.sortedBy === 'Name') return a.name.localeCompare(b.name)
       if (state.sortedBy === 'Age') return a.dob - b.dob
-      if (state.sortedBy === 'Type') return a.type.localeCompare(b.type)
+      if (state.sortedBy === 'Type') {
+        // Sort null 'type' to the end
+        if (a.type === null && b.type !== null) return 1
+        if (a.type !== null && b.type === null) return -1
+        return a.type.localeCompare(b.type)
+      }
       if (state.sortedBy === 'Points') return b.points - a.points
     })
 
@@ -31,7 +40,12 @@ function Home() {
   return (
     <>
       {/* Filter  */}
-      <Filters heading="Cricket Players" />
+      <Filters
+        heading="Cricket Players"
+        handleChange={(e) =>
+          dispatch({ type: 'SET_SORTED_BY', payload: e.target.value })
+        }
+      />
 
       {/* Search */}
       <SearchBar
@@ -45,39 +59,13 @@ function Home() {
       <List items={paginatedCricketers} />
 
       {/* Pagination */}
-      <div className="flex items-center py-4 text-sm justify-between">
-        <p className="text-gray-500">
-          Showing {state.currentPage}/{totalPages}
-        </p>
-
-        <div className="inline-flex gap-2">
-          {/* Previous and Next buttons */}
-          <button
-            className={'disabled:hidden'}
-            disabled={state.currentPage === 1}
-            onClick={() =>
-              dispatch({
-                type: 'SET_CURRENT_PAGE',
-                payload: state.currentPage - 1,
-              })
-            }
-          >
-            Prev
-          </button>
-          <button
-            className={'disabled:hidden'}
-            disabled={state.currentPage === totalPages}
-            onClick={() =>
-              dispatch({
-                type: 'SET_CURRENT_PAGE',
-                payload: state.currentPage + 1,
-              })
-            }
-          >
-            Next
-          </button>
-        </div>
-      </div>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={state.currentPage}
+        onPageChange={(pageNumber) => {
+          dispatch({ type: 'SET_CURRENT_PAGE', payload: pageNumber })
+        }}
+      />
     </>
   )
 }

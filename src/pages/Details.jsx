@@ -22,6 +22,7 @@ function Details() {
 
         <button
           type="button"
+          className="inline-flex items-center justify-center h-9 mr-3 px-3 text-xs font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-600 focus:z-10 focus:ring-2 focus:ring-gray-300"
           onClick={() => dispatch({ type: 'SET_BACK_PAGE' })}
         >
           Back

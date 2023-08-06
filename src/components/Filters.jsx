@@ -17,8 +17,8 @@ function Filters({ heading, handleChange }) {
         >
           <option value="Name">Name</option>
           <option value="Age">Age</option>
-          <option value="Points">Points</option>
           <option value="Type">Type</option>
+          <option value="Points">Points</option>
         </select>
       </div>
     </section>
